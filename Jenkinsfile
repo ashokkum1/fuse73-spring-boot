@@ -2,10 +2,11 @@ def templateName = 'fuse-api'
 pipeline {
     agent any
 	 tools {
-        maven 'M3'
-		docker 'docker'
+        maven 'M3'		
     }
-	
+	agent {
+        docker { image 'node:7-alpine' }
+    }
 
 	stages {
 		stage('preamble') {
