@@ -3,10 +3,7 @@ pipeline {
     agent any
 	 tools {
         maven 'M3'		
-    }
-	agent {
-        docker { image 'node:7-alpine' }
-    }
+    }	
 
 	stages {
 		stage('preamble') {
@@ -22,7 +19,10 @@ pipeline {
 		}
 		
 		
-        stage('Build') {			
+        stage('Build') {
+			agent {
+                docker { image 'node:7-alpine' }
+            }		
             steps {
 				echo 'Building..'
 				script {
